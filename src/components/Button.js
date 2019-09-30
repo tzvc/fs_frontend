@@ -18,7 +18,7 @@ const Button = styled.button`
 	box-sizing: border-box;
 	width: 100%;
 	border-radius: 2px;
-	padding: 1rem 1rem 1rem 1.5rem;
+	padding: 1rem;
 	animation: ${gradient} 3s linear infinite;
 	background-position: 0% 0%;
 	background: linear-gradient(
