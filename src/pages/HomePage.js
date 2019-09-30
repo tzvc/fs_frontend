@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Input from "../components/Input";
 
 const Content = styled.div`
 	width: 30em;
@@ -48,6 +49,7 @@ const HomePage = () => (
 			cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
 			est laborum.
 		</Description>
+		<Input />
 	</Content>
 );
 
