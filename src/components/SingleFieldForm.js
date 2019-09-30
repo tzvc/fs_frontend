@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { RightArrowAlt } from "styled-icons/boxicons-regular/RightArrowAlt";
 
-const StyledInputContainer = styled.form`
+const StyledInputContainer = styled.div`
 	position: relative;
 	display: flex;
 	flex-direction: row;

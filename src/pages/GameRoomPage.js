@@ -2,10 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 // components
-import Input from "../components/Input";
-import Button from "../components/Button";
 import Spacer from "../components/Spacer";
-import { SIGNIN_ROUTE } from "../constants/routes";
 
 const Content = styled.div`
 	width: 25em;
