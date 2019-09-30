@@ -3,9 +3,12 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // pages
 import HomePage from "./pages/HomePage";
+import SignUpPage from "./pages/SignUpPage";
 import GameRoomPage from "./pages/GameRoomPage";
 // components
 import NavBar from "./components/NavBar";
+// constants
+import { SIGNUP_ROUTE } from "./constants/routes";
 
 const theme = {
 	primary: "#03DAC5",
@@ -35,6 +38,7 @@ function App() {
 				<GlobalStyle />
 				<NavBar />
 				<Route path="/" exact component={HomePage} />
+				<Route path={SIGNUP_ROUTE} exact component={SignUpPage} />
 				<Route path="/:roomId" component={GameRoomPage} />
 			</Router>
 		</ThemeProvider>

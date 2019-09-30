@@ -35,13 +35,15 @@ const StyledArrow = styled(RightArrowAlt)`
 	}
 `;
 
-const Input = () => {
+const Input = ({ placeholder, onClick }) => {
 	return (
 		<StyledInputContainer>
-			<input placeholder="Enter a room code" />
-			<button>
-				<StyledArrow />
-			</button>
+			<input placeholder={placeholder} />
+			{onClick !== undefined && (
+				<button>
+					<StyledArrow />
+				</button>
+			)}
 		</StyledInputContainer>
 	);
 };
