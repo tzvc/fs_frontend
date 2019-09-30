@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+// pages
+import HomePage from "./pages/HomePage";
+import GameRoomPage from "./pages/GameRoomPage";
+// components
+import NavBar from "./components/NavBar";
+
+const theme = {
+	primary: "#03DAC5",
+	primaryBackground: "#303030",
+	tablet: "768px"
+};
+
+const GlobalStyle = createGlobalStyle`
+  body {
+		height: 100%;
+		background-color: ${({ theme }) => theme.primaryBackground}
+		margin: 0;
+		padding: 5vh 5vw;
+		max-width: 1200px;
+		margin: auto;
+  }
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<ThemeProvider theme={theme}>
+			<Router>
+				<GlobalStyle />
+				<NavBar />
+				<Route path="/" exact component={HomePage} />
+				<Route path="/:roomId" component={GameRoomPage} />
+			</Router>
+		</ThemeProvider>
+	);
 }
 
 export default App;
