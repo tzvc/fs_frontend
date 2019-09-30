@@ -9,7 +9,10 @@ import NavBar from "./components/NavBar";
 
 const theme = {
 	primary: "#03DAC5",
+	secondary: "#b294ff",
 	primaryBackground: "#1d1e26",
+	text: "#bfd2ff",
+	textAccent: "#7881a1",
 	tablet: "768px"
 };
 

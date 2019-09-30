@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 const Spacer = styled.div`
-	margin: 1rem 1rem;
+	display: flex;
+	color: ${props => props.theme.textAccent};
+	align-content: center;
+	margin: 1rem auto;
 `;
 
 export default Spacer;

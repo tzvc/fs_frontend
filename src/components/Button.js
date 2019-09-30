@@ -11,18 +11,21 @@ const gradient = keyframes`
 
 const Button = styled.button`
 	font-size: 1.4rem;
-	line-height: 2.4rem;
+	line-height: 2rem;
 	color: ${props => props.theme.primaryBackground};
 	font-weight: bold;
 	position: relative;
-	display: flex;
-	flex-direction: row;
+	box-sizing: border-box;
 	width: 100%;
 	border-radius: 2px;
 	padding: 1rem 1rem 1rem 1.5rem;
 	animation: ${gradient} 3s linear infinite;
 	background-position: 0% 0%;
-	background: linear-gradient(to right, #b294ff, #57e6e6);
+	background: linear-gradient(
+		to right,
+		${props => props.theme.secondary},
+		${props => props.theme.primary}
+	);
 	&:hover {
 		cursor: pointer;
 		opacity: 0.7;

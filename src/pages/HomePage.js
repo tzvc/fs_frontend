@@ -15,7 +15,7 @@ const Content = styled.div`
 const Description = styled.p`
 	font-family: "Poppins", sans-serif;
 	font-size: 1em;
-	color: #cccccc;
+	color: ${props => props.theme.text};
 `;
 
 const Title = styled.h1`
@@ -54,7 +54,7 @@ const HomePage = () => (
 		<Spacer />
 
 		<Input />
-		<Spacer />
+		<Spacer>OR</Spacer>
 		<Button>Sign in</Button>
 	</Content>
 );
