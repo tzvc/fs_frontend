@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Spacer from "../components/Spacer";
-import { SIGNUP_ROUTE } from "../constants/routes";
+import { SIGNIN_ROUTE } from "../constants/routes";
 
 const Content = styled.div`
 	width: 25em;
@@ -61,7 +61,7 @@ const HomePage = withRouter(({ history }) => (
 			onClick={() => console.log("room")}
 		/>
 		<Spacer>OR</Spacer>
-		<Button onClick={() => history.push(SIGNUP_ROUTE)}>Sign in</Button>
+		<Button onClick={() => history.push(SIGNIN_ROUTE)}>Sign In</Button>
 	</Content>
 ));
 

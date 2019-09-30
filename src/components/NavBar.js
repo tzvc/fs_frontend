@@ -23,7 +23,7 @@ const NavElem = styled(Link)`
 const NavBar = () => {
 	return (
 		<Content>
-			<NavElem to={SIGNIN_ROUTE}>Sign up</NavElem>
+			<NavElem to={SIGNIN_ROUTE}>Sign In</NavElem>
 		</Content>
 	);
 };

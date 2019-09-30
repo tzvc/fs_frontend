@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import StyledLink from "../components/Link";
 import Spacer from "../components/Spacer";
 import Form from "../components/Form";
-import { SIGNIN_ROUTE } from "../constants/routes";
+import { SIGNUP_ROUTE } from "../constants/routes";
 
 const Content = styled.div`
 	width: 25em;
@@ -34,10 +34,10 @@ const Title = styled.h1`
 	}
 `;
 
-export default class SignUpPage extends React.Component {
+export default class SignInPage extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { username: "", password: "", password_conf: "" };
+		this.state = { username: "", password: "" };
 	}
 
 	_handleFormChange = event => {
@@ -52,14 +52,14 @@ export default class SignUpPage extends React.Component {
 	render() {
 		return (
 			<Content>
-				<Title>Sign Up</Title>
+				<Title>Sign In</Title>
 				<Spacer />
 				<Form onSubmit={this._handleFormSubmit}>
 					<label htmlFor="username">Username</label>
 					<input
 						name="username"
 						type="text"
-						placeholder="Enter a username"
+						placeholder="Enter your username"
 						value={this.state.username}
 						onChange={this._handleFormChange}
 					/>
@@ -71,22 +71,15 @@ export default class SignUpPage extends React.Component {
 						value={this.state.password}
 						onChange={this._handleFormChange}
 					/>
-					<label>Confirmation</label>
-					<input
-						name="password_conf"
-						type="password"
-						placeholder="Password confirmation"
-						value={this.state.password_conf}
-						onChange={this._handleFormChange}
-					/>
 					<Spacer />
-					<Button>Sign up</Button>
+
+					<Button>Sign in</Button>
 				</Form>
 				<Spacer />
 
 				<Spacer>
-					Already have an account?&nbsp;
-					<StyledLink to={SIGNIN_ROUTE}>Sign in</StyledLink>
+					Don't have an account?&nbsp;
+					<StyledLink to={SIGNUP_ROUTE}>Sign up</StyledLink>
 				</Spacer>
 			</Content>
 		);

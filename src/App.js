@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 // pages
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
+import SignInPage from "./pages/SignInPage";
 import GameRoomPage from "./pages/GameRoomPage";
 // components
 import NavBar from "./components/NavBar";
 // constants
-import { SIGNUP_ROUTE } from "./constants/routes";
+import { SIGNUP_ROUTE, SIGNIN_ROUTE } from "./constants/routes";
 
 const theme = {
 	primary: "#03DAC5",
@@ -39,6 +40,7 @@ function App() {
 				<NavBar />
 				<Route path="/" exact component={HomePage} />
 				<Route path={SIGNUP_ROUTE} exact component={SignUpPage} />
+				<Route path={SIGNIN_ROUTE} exact component={SignInPage} />
 				<Route path="/:roomId" component={GameRoomPage} />
 			</Router>
 		</ThemeProvider>
