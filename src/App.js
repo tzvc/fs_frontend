@@ -9,18 +9,19 @@ import NavBar from "./components/NavBar";
 
 const theme = {
 	primary: "#03DAC5",
-	primaryBackground: "#303030",
+	primaryBackground: "#1d1e26",
 	tablet: "768px"
 };
 
 const GlobalStyle = createGlobalStyle`
   body {
 		height: 100%;
-		background-color: ${({ theme }) => theme.primaryBackground}
+		background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 100%, #1d1e26);
 		margin: 0;
 		padding: 5vh 5vw;
 		max-width: 1200px;
-		margin: auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
 `;
 

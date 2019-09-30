@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import Input from "../components/Input";
+import Button from "../components/Button";
+import Spacer from "../components/Spacer";
 
 const Content = styled.div`
-	width: 30em;
+	width: 25em;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -11,7 +13,7 @@ const Content = styled.div`
 `;
 
 const Description = styled.p`
-	font-family: "Roboto Mono", monospace;
+	font-family: "Poppins", sans-serif;
 	font-size: 1em;
 	color: #cccccc;
 `;
@@ -23,7 +25,7 @@ const Title = styled.h1`
 	font-style: italic;
 	letter-spacing: 0px;
 	line-height: 1.2em;
-	font-family: "EB Garamond", serif;
+	font-family: "Poppins", sans-serif;
 	font-size: 5em;
 	font-weight: 600;
 	font-style: normal;
@@ -49,7 +51,11 @@ const HomePage = () => (
 			cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
 			est laborum.
 		</Description>
+		<Spacer />
+
 		<Input />
+		<Spacer />
+		<Button>Sign in</Button>
 	</Content>
 );
 

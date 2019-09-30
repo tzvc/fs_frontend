@@ -7,33 +7,9 @@ const StyledInputContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	max-width: 300px;
 	border-radius: 2px;
 	padding: 1rem 1rem 1rem 1.5rem;
 	background: rgba(57, 63, 84, 0.8);
-	&:after {
-		content: "";
-		position: absolute;
-		left: 0px;
-		right: 0px;
-		bottom: 0px;
-		z-index: 999;
-		height: 0.5rem;
-		border-bottom-left-radius: 2px;
-		border-bottom-right-radius: 2px;
-		background-position: 0% 0%;
-		background: linear-gradient(
-			to right,
-			#b294ff,
-			#57e6e6,
-			#feffb8,
-			#57e6e6,
-			#b294ff,
-			#57e6e6
-		);
-		background-size: 500% auto;
-		animation: gradient 3s linear infinite;
-	}
 
 	input {
 		flex-grow: 1;

@@ -9,7 +9,7 @@ const Content = styled.div`
 `;
 
 const NavElem = styled(Link)`
-	font-family: "Roboto Mono", monospace;
+	font-family: "Poppins", sans-serif;
 	font-size: 1em;
 	text-decoration: none;
 	color: ${props => props.theme.primary};
