@@ -58,7 +58,7 @@ const HomePage = withRouter(({ history }) => (
 
 		<Input
 			placeholder="Enter a room code"
-			onClick={() => console.log("room")}
+			onSubmit={value => history.push(`/${value}`)}
 		/>
 		<Spacer>OR</Spacer>
 		<Button onClick={() => history.push(SIGNIN_ROUTE)}>Sign In</Button>

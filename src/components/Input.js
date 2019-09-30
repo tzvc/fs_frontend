@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { RightArrowAlt } from "styled-icons/boxicons-regular/RightArrowAlt";
 
-const StyledInputContainer = styled.div`
+const StyledInputContainer = styled.form`
 	position: relative;
 	display: flex;
 	flex-direction: row;
@@ -35,17 +35,22 @@ const StyledArrow = styled(RightArrowAlt)`
 	}
 `;
 
-const Input = ({ placeholder, onClick }) => {
-	return (
-		<StyledInputContainer>
-			<input placeholder={placeholder} />
-			{onClick !== undefined && (
-				<button>
+export default class SingleFieldForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { value: "" };
+	}
+	render() {
+		return (
+			<StyledInputContainer>
+				<input
+					placeholder={this.props.placeholder}
+					onChange={e => this.setState({ value: e.target.value })}
+				/>
+				<button onClick={() => this.props.onSubmit(this.state.value)}>
 					<StyledArrow />
 				</button>
-			)}
-		</StyledInputContainer>
-	);
-};
-
-export default Input;
+			</StyledInputContainer>
+		);
+	}
+}
