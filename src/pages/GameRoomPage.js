@@ -3,8 +3,16 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 // components
 import Spacer from "../components/Spacer";
+import GameRenderer from "../components/GameRenderer";
 
 const Content = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+`;
+
+const Lobby = styled.div`
 	width: 25em;
 	display: flex;
 	flex-direction: column;
@@ -41,17 +49,20 @@ const Title = styled.h1`
 
 const GameRoomPage = withRouter(({ match }) => (
 	<Content>
-		<Title>{`Room #${match.params["roomId"]}`}</Title>
-		<Description>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-			veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-			commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-			velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-			cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-			est laborum.
-		</Description>
-		<Spacer />
+		<Lobby>
+			<Title>{`Room #${match.params["roomId"]}`}</Title>
+			<Description>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+				veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+				commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+				velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+				occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+				mollit anim id est laborum.
+			</Description>
+			<Spacer />
+		</Lobby>
+		<GameRenderer />
 	</Content>
 ));
 
