@@ -6,7 +6,7 @@ import SingleFieldForm from "../components/SingleFieldForm";
 import Button from "../components/Button";
 import Spacer from "../components/Spacer";
 import { SIGNIN_ROUTE } from "../constants/routes";
-import { withUser, UserConsumer } from "../providers/UserProvider";
+import { UserConsumer } from "../providers/UserProvider";
 
 const Content = styled.div`
 	width: 25em;

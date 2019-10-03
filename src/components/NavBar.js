@@ -19,6 +19,7 @@ const NavElem = styled(Link)`
 		cursor: pointer;
 		opacity: 0.7;
 	}
+	padding: 2rem 0;
 `;
 
 const NavBar = () => {

@@ -5,7 +5,6 @@ import StyledLink from "../components/Link";
 import Spacer from "../components/Spacer";
 import Form from "../components/Form";
 import { SIGNIN_ROUTE } from "../constants/routes";
-import { register } from "../service/auth_service";
 import { withRouter } from "react-router-dom";
 
 import { toast } from "react-toastify";

@@ -22,11 +22,6 @@ const SidePanel = styled.div`
 	justify-content: center;
 `;
 
-const Description = styled.p`
-	font-family: "Poppins", sans-serif;
-	font-size: 1em;
-	color: ${props => props.theme.text};
-`;
 const GameFrame = styled.div`
 	border: 2px solid ${props => props.theme.text};
 
@@ -134,9 +129,9 @@ class GameRoomPage extends React.Component {
 							Players {this.state.users.length} / 10
 							<PlayerList>
 								{this.state.users.map(player => (
-									<PlayerListRow>
+									<PlayerListRow key={player.id}>
 										<span>{player.id}</span>
-										<span>{player.status == 1 ? "playing" : ""}</span>
+										<span>{player.status === 1 ? "playing" : ""}</span>
 									</PlayerListRow>
 								))}
 							</PlayerList>
