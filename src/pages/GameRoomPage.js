@@ -6,7 +6,7 @@ import io from "socket.io-client";
 import Spacer from "../components/Spacer";
 import GameRenderer from "../components/GameRenderer";
 import Button from "../components/Button";
-import { API_ROOT } from "../constants/api";
+import { WS_ROOT } from "../constants/api";
 
 const Content = styled.div`
 	display: flex;
