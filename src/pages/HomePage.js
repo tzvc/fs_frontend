@@ -6,6 +6,7 @@ import SingleFieldForm from "../components/SingleFieldForm";
 import Button from "../components/Button";
 import Spacer from "../components/Spacer";
 import { SIGNIN_ROUTE } from "../constants/routes";
+import { withUser, UserConsumer } from "../providers/UserProvider";
 
 const Content = styled.div`
 	width: 25em;
@@ -43,26 +44,34 @@ const Title = styled.h1`
 `;
 
 const HomePage = withRouter(({ history }) => (
-	<Content>
-		<Title>Skible</Title>
-		<Description>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-			veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-			commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-			velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-			cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-			est laborum.
-		</Description>
-		<Spacer />
+	<UserConsumer>
+		{({ isLogged }) => (
+			<Content>
+				<Title>Skible</Title>
+				<Description>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+					minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip ex ea commodo consequat. Duis aute irure dolor in
+					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+					culpa qui officia deserunt mollit anim id est laborum.
+				</Description>
+				<Spacer />
 
-		<SingleFieldForm
-			placeholder="Enter a room code"
-			onSubmit={value => history.push(`/${value}`)}
-		/>
-		<Spacer>OR</Spacer>
-		<Button onClick={() => history.push(SIGNIN_ROUTE)}>Sign In</Button>
-	</Content>
+				{isLogged ? (
+					<>
+						<SingleFieldForm
+							placeholder="Join or create a room"
+							onSubmit={value => history.push(`/room/${value}`)}
+						/>
+					</>
+				) : (
+					<Button onClick={() => history.push(SIGNIN_ROUTE)}>Sign In</Button>
+				)}
+			</Content>
+		)}
+	</UserConsumer>
 ));
 
 export default HomePage;

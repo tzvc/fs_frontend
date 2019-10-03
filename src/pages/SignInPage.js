@@ -5,6 +5,9 @@ import StyledLink from "../components/Link";
 import Spacer from "../components/Spacer";
 import Form from "../components/Form";
 import { SIGNUP_ROUTE } from "../constants/routes";
+import { withRouter } from "react-router-dom";
+import { toast } from "react-toastify";
+import { withUser } from "../providers/UserProvider";
 
 const Content = styled.div`
 	width: 25em;
@@ -34,7 +37,7 @@ const Title = styled.h1`
 	}
 `;
 
-export default class SignInPage extends React.Component {
+class SignInPage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = { username: "", password: "" };
@@ -44,9 +47,16 @@ export default class SignInPage extends React.Component {
 		this.setState({ [event.target.name]: event.target.value });
 	};
 
-	_handleFormSubmit = event => {
+	_handleFormSubmit = async event => {
 		event.preventDefault();
-		// TODO(theo) send payload
+		try {
+			await this.props.login(this.state.username, this.state.password);
+			this.props.history.push("/");
+		} catch (e) {
+			toast.error(e, {
+				position: toast.POSITION.TOP_CENTER
+			});
+		}
 	};
 
 	render() {
@@ -85,3 +95,5 @@ export default class SignInPage extends React.Component {
 		);
 	}
 }
+
+export default withRouter(withUser(SignInPage));

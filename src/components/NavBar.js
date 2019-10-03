@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { SIGNIN_ROUTE } from "../constants/routes";
+import { UserConsumer } from "../providers/UserProvider";
 
 const Content = styled.div`
 	display: flex;
@@ -22,9 +23,13 @@ const NavElem = styled(Link)`
 
 const NavBar = () => {
 	return (
-		<Content>
-			<NavElem to={SIGNIN_ROUTE}>Sign In</NavElem>
-		</Content>
+		<UserConsumer>
+			{({ username, isLogged }) => (
+				<Content>
+					<NavElem to={SIGNIN_ROUTE}>{isLogged ? username : "Sign In"}</NavElem>
+				</Content>
+			)}
+		</UserConsumer>
 	);
 };
 

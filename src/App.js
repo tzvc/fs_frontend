@@ -1,6 +1,8 @@
 import React from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // pages
 import HomePage from "./pages/HomePage";
 import SignUpPage from "./pages/SignUpPage";
@@ -10,6 +12,7 @@ import GameRoomPage from "./pages/GameRoomPage";
 import NavBar from "./components/NavBar";
 // constants
 import { SIGNUP_ROUTE, SIGNIN_ROUTE } from "./constants/routes";
+import { UserProvider } from "./providers/UserProvider";
 
 const theme = {
 	primary: "#03DAC5",
@@ -35,14 +38,17 @@ const GlobalStyle = createGlobalStyle`
 function App() {
 	return (
 		<ThemeProvider theme={theme}>
-			<Router>
-				<GlobalStyle />
-				<NavBar />
-				<Route path="/" exact component={HomePage} />
-				<Route path={SIGNUP_ROUTE} exact component={SignUpPage} />
-				<Route path={SIGNIN_ROUTE} exact component={SignInPage} />
-				<Route path="/:roomId" component={GameRoomPage} />
-			</Router>
+			<UserProvider>
+				<ToastContainer />
+				<Router>
+					<GlobalStyle />
+					<NavBar />
+					<Route path="/" exact component={HomePage} />
+					<Route path={SIGNUP_ROUTE} exact component={SignUpPage} />
+					<Route path={SIGNIN_ROUTE} exact component={SignInPage} />
+					<Route path="/room/:roomId" component={GameRoomPage} />
+				</Router>
+			</UserProvider>
 		</ThemeProvider>
 	);
 }
