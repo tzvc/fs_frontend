@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
 		background-image: radial-gradient(circle at 0% 0%, #373b52, #252736 100%, #1d1e26);
 		margin: 0;
 		padding: 5vh 5vw;
-		max-width: 1200px;
+		// max-width: 1200px;
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
