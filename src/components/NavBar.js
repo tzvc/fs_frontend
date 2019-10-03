@@ -27,7 +27,9 @@ const NavBar = () => {
 		<UserConsumer>
 			{({ username, isLogged }) => (
 				<Content>
-					<NavElem to={SIGNIN_ROUTE}>{isLogged ? username : "Sign In"}</NavElem>
+					<NavElem to={SIGNIN_ROUTE}>{`${isLogged ? username : "Sign In"} ${
+						process.env.NODE_ENV
+					}`}</NavElem>
 				</Content>
 			)}
 		</UserConsumer>
