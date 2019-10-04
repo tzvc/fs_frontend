@@ -6,4 +6,4 @@ export const API_ROOT =
 export const WS_ROOT =
 	process.env.NODE_ENV === "development"
 		? "http://localhost:8080/lobby"
-		: "https://skibble.herokuapp.com";
+		: "https://skibble.herokuapp.com/lobby";
