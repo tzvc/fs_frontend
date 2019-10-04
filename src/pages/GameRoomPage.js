@@ -7,6 +7,7 @@ import Spacer from "../components/Spacer";
 import GameRenderer from "../components/GameRenderer";
 import Button from "../components/Button";
 import { WS_ROOT } from "../constants/api";
+import { withUser } from "../providers/UserProvider";
 
 const Content = styled.div`
 	display: flex;
@@ -90,18 +91,30 @@ class GameRoomPage extends React.Component {
 
 	componentDidMount() {
 		this.socket = io(WS_ROOT);
-		this.socket.on("lobby_update", data =>
+		this.socket.emit("LOGIN_REQUEST", {
+			username: this.props.username,
+			password: this.props.password,
+			token: this.props.token
+		})
+
+		this.socket.emit("JOIN_ROOM_REQUEST", this.room)
+
+		this.socket.on("UPDATE_ROOM_STATE", data => {
 			this.setState({
 				users: data.users,
 				isGameRunning: data.isGameRunning,
 				room_state: STATE_CONNECTED
 			})
-		);
+		});
 		this.socket.on("connect_error", () =>
 			this.setState({
 				room_state: STATE_ERROR
 			})
 		);
+	}
+
+	componentWillUnmount() {
+		this.socket.emit("LEAVE_ROOM_REQUEST", this.room)
 	}
 
 	_addToLimitedQueue = str => {
@@ -130,9 +143,9 @@ class GameRoomPage extends React.Component {
 							Players {this.state.users.length} / 10
 							<PlayerList>
 								{this.state.users.map(player => (
-									<PlayerListRow key={player.id}>
-										<span>{player.id}</span>
-										<span>{player.status === 1 ? "playing" : ""}</span>
+									<PlayerListRow key={player.gameId}>
+										<span>{player.username}</span>
+										<span>{player.isReady === true ? "Ready" : ""}</span>
 									</PlayerListRow>
 								))}
 							</PlayerList>
@@ -151,4 +164,4 @@ class GameRoomPage extends React.Component {
 	}
 }
 
-export default GameRoomPage = withRouter(GameRoomPage);
+export default GameRoomPage = withRouter(withUser(GameRoomPage));

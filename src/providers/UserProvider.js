@@ -5,6 +5,7 @@ import { register, login } from "../service/auth_service";
 const UserContext = createContext({
 	isLogged: false,
 	username: "",
+	password: "",
 	token: "",
 	register: () => {},
 	login: () => {}
@@ -16,6 +17,7 @@ export class UserProvider extends React.Component {
 			const user = await register(username, password);
 			this.setState({
 				username: user.username,
+				password: user.password,
 				token: user.token,
 				isLogged: true
 			});
@@ -29,6 +31,7 @@ export class UserProvider extends React.Component {
 			const user = await login(username, password);
 			this.setState({
 				username: user.username,
+				password: user.password,
 				token: user.token,
 				isLogged: true
 			});
@@ -39,6 +42,7 @@ export class UserProvider extends React.Component {
 	state = {
 		isLogged: false,
 		username: "",
+		password: "",
 		token: "",
 		register: this.register,
 		login: this.login
