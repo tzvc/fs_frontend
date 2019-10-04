@@ -84,6 +84,7 @@ class GameRoomPage extends React.Component {
 		this.state = {
 			users: [],
 			isGameRunning: false,
+			isReady: false,
 			room_state: STATE_CONNECTING
 		};
 		this.socket = null;
@@ -100,17 +101,24 @@ class GameRoomPage extends React.Component {
 		this.socket.emit("JOIN_ROOM_REQUEST", this.room)
 
 		this.socket.on("UPDATE_ROOM_STATE", data => {
+			var isReady = this.state.isReady
+
+			data.users.forEach(user => {
+				if (user.username === this.props.username) isReady = user.isReady
+			});
 			this.setState({
 				users: data.users,
 				isGameRunning: data.isGameRunning,
-				room_state: STATE_CONNECTED
+				room_state: STATE_CONNECTED,
+				isReady: isReady
 			})
 		});
-		this.socket.on("connect_error", () =>
-			this.setState({
-				room_state: STATE_ERROR
-			})
-		);
+
+		// this.socket.on("connect_error", () =>
+		// 	this.setState({
+		// 		room_state: STATE_ERROR
+		// 	})
+		// );
 	}
 
 	componentWillUnmount() {
@@ -121,9 +129,12 @@ class GameRoomPage extends React.Component {
 		this.setState(pv => ({ messages: pv.slice(0, 10) }));
 	};
 
-	_startGame = () => {
+	_setReady = () => {
 		try {
-			this.socket.emit("start_game");
+			this.socket.emit("GAME__TOGGLE_READY", {
+				token: this.props.token,
+				isReady: !this.state.isReady
+			});
 		} catch (e) {
 			console.error("Error connecting to room");
 		}
@@ -153,11 +164,14 @@ class GameRoomPage extends React.Component {
 					)}
 
 					<Spacer />
-					<Button onClick={this._startGame}>Start Game</Button>
+						<Button onClick={this._setReady}>
+							{this.state.isReady ? ("Waiting ...") : ("I'm ready !")}
+						</Button>
+
 				</SidePanel>
 
 				<GameFrame>
-					{this.state.isGameRunning && <GameRenderer socket={this.socket} />}
+					{this.state.isGameRunning && <GameRenderer token={this.props.token} socket={this.socket} />}
 				</GameFrame>
 			</Content>
 		);

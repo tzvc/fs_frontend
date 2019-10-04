@@ -39,10 +39,13 @@ export default class GameRenderer extends React.Component {
 
 		// listen to keyboard keystrock to server
 		document.addEventListener("keydown", e => {
-			this.props.socket.emit("player_dir_update", e.which);
+			this.props.socket.emit("GAME__DIR_UPDATE", {
+				token: this.props.token,
+				key: e.which
+			});
 		});
 		// listen to game update
-		this.props.socket.on("game_update", this._updateGameState);
+		this.props.socket.on("GAME__UPDATE", this._updateGameState);
 	}
 
 	_updateGameState = players => {
